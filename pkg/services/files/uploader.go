@@ -71,6 +71,7 @@ func newS3Uploader() *S3Uploader {
 	} else {
 		var err error
 		sess, err = session.NewSession(&aws.Config{
+			Endpoint:    &cfg.S3URL,
 			Region:      cfg.BucketRegion,
 			Credentials: credentials.NewStaticCredentials(cfg.AccessKey, cfg.SecretKey, ""),
 		})
