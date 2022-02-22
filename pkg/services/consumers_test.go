@@ -8,8 +8,8 @@ import (
 )
 
 var _ = Describe("ConsumerService basic functions", func() {
-	Describe("creation of the service", func() {
-		Context("returns a correct instance", func() {
+	Describe("creation of a kafka consumer service", func() {
+		Context("returns correct instance", func() {
 			p := 9092
 			topic := "platform.playbook-dispatcher.runs"
 			config := &v1.KafkaConfig{Brokers: []v1.BrokerConfig{{Hostname: "localhost", Port: &p}}}
@@ -17,6 +17,40 @@ var _ = Describe("ConsumerService basic functions", func() {
 			It("not to be nil", func() {
 				Expect(s).ToNot(BeNil())
 			})
+		})
+	})
+	Describe("creation of a kafka consumer service", func() {
+		Context("returns correct instance", func() {
+			p := 9092
+			topic := "platform.inventory.events"
+			config := &v1.KafkaConfig{Brokers: []v1.BrokerConfig{{Hostname: "localhost", Port: &p}}}
+			s := services.NewKafkaConsumerService(config, topic)
+			It("not to be nil", func() {
+				Expect(s).ToNot(BeNil())
+			})
+		})
+	})
+	Describe("Fail to create a service", func() {
+		Context("returns nill", func() {
+			p := 9092
+			topic := "test1"
+			config := &v1.KafkaConfig{Brokers: []v1.BrokerConfig{{Hostname: "localhost", Port: &p}}}
+			s := services.NewKafkaConsumerService(config, topic)
+			It("to be nil", func() {
+				Expect(s).To(BeNil())
+			})
+		})
+	})
+	Describe("creation of a kafka consumer service", func() {
+		Context("returns correct instance", func() {
+			p := 9092
+			topic := "platform.inventory.events"
+			config := &v1.KafkaConfig{Brokers: []v1.BrokerConfig{{Hostname: "localhost", Port: &p}}}
+			s := services.NewKafkaConsumerService(config, topic)
+			It("not to be nil", func() {
+				Expect(s).ToNot(BeNil())
+			})
+			s.Start()
 		})
 	})
 })
