@@ -326,7 +326,7 @@ func updateFromHTTP(w http.ResponseWriter, r *http.Request) (*[]models.UpdateTra
 				"updateDevice": updateDevice,
 			}).Debug("Saved updated device")
 
-			devices = append(devices, *updateDevice)
+			devices = append(devices, updateDevice)
 			update.Devices = devices
 
 			for _, deployment := range device.Ostree.RpmOstreeDeployments {

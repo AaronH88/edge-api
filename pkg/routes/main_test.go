@@ -26,11 +26,11 @@ var (
 	testUpdates = []models.UpdateTransaction{
 		{
 			Account: "0000000",
-			Devices: []models.Device{testDevices[0], testDevices[1]},
+			Devices: []*models.Device{&testDevices[0], &testDevices[1]},
 		},
 		{
 			Account: "0000001",
-			Devices: []models.Device{testDevices[2], testDevices[3]},
+			Devices: []*models.Device{&testDevices[2], &testDevices[3]},
 		},
 	}
 )

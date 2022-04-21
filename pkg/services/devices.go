@@ -630,8 +630,8 @@ func (s *DeviceService) GetDevicesView(limit int, offset int, tx *gorm.DB) (*mod
 	setOfImages := make(map[uint]*neededImageInfo)
 	for _, devices := range storedDevices {
 		var status = models.DeviceViewStatusRunning
-		if devices.UpdateTransaction != nil && len(*devices.UpdateTransaction) > 0 {
-			updateStatus := (*devices.UpdateTransaction)[len(*devices.UpdateTransaction)-1].Status
+		if devices.UpdateTransaction != nil && len(devices.UpdateTransaction) > 0 {
+			updateStatus := (devices.UpdateTransaction)[len(devices.UpdateTransaction)-1].Status
 			if updateStatus == models.UpdateStatusBuilding {
 				status = models.DeviceViewStatusUpdating
 			}

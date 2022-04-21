@@ -79,5 +79,5 @@ type Device struct {
 	ImageID           uint                 `json:"ImageID"`
 	UpdateAvailable   bool                 `json:"UpdateAvailable"`
 	DevicesGroups     []DeviceGroup        `faker:"-" gorm:"many2many:device_groups_devices;" json:"DevicesGroups"`
-	UpdateTransaction *[]UpdateTransaction `gorm:"many2many:updatetransaction_devices;" json:"UpdateTransaction"`
+	UpdateTransaction []*UpdateTransaction `faker:"-" gorm:"many2many:updatetransaction_devices;" json:"UpdateTransaction"`
 }

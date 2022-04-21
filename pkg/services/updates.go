@@ -181,7 +181,7 @@ func (s *UpdateService) CreateUpdate(id uint) (*models.UpdateTransaction, error)
 			if excPlaybook.StatusCode == http.StatusCreated {
 				device.Connected = true
 				dispatchRecord := &models.DispatchRecord{
-					Device:               &device,
+					Device:               device,
 					PlaybookURL:          playbookURL,
 					Status:               models.DispatchRecordStatusCreated,
 					PlaybookDispatcherID: excPlaybook.PlaybookDispatcherID,
@@ -190,7 +190,7 @@ func (s *UpdateService) CreateUpdate(id uint) (*models.UpdateTransaction, error)
 			} else {
 				device.Connected = false
 				dispatchRecord := &models.DispatchRecord{
-					Device:      &device,
+					Device:      device,
 					PlaybookURL: playbookURL,
 					Status:      models.DispatchRecordStatusError,
 				}

@@ -48,18 +48,18 @@ var _ = Describe("UpdateService Basic functions", func() {
 			db.DB.Create(&device2)
 			updates := []models.UpdateTransaction{
 				{
-					Devices: []models.Device{
-						device,
+					Devices: []*models.Device{
+						&device,
 					},
 				},
 				{
-					Devices: []models.Device{
-						device,
+					Devices: []*models.Device{
+						&device,
 					},
 				},
 				{
-					Devices: []models.Device{
-						device2,
+					Devices: []*models.Device{
+						&device2,
 					},
 				},
 			}
@@ -104,8 +104,8 @@ var _ = Describe("UpdateService Basic functions", func() {
 			}
 			db.DB.Create(&device)
 			update = models.UpdateTransaction{
-				Devices: []models.Device{
-					device,
+				Devices: []*models.Device{
+					&device,
 				},
 				Status: models.UpdateStatusBuilding,
 			}
@@ -125,8 +125,8 @@ var _ = Describe("UpdateService Basic functions", func() {
 			}
 			db.DB.Create(&device)
 			update = models.UpdateTransaction{
-				Devices: []models.Device{
-					device,
+				Devices: []*models.Device{
+					&device,
 				},
 				Status: models.UpdateStatusBuilding,
 			}
@@ -375,7 +375,7 @@ var _ = Describe("UpdateService Basic functions", func() {
 		db.DB.Create(&device)
 		update := models.UpdateTransaction{
 			Account:  account,
-			Devices:  []models.Device{device},
+			Devices:  []*models.Device{&device},
 			CommitID: newCommit.ID,
 			Status:   models.UpdateStatusBuilding,
 		}
@@ -436,7 +436,7 @@ var _ = Describe("UpdateService Basic functions", func() {
 				// create a new update with commit and image, knowing that we have a new image
 				update := models.UpdateTransaction{
 					Account:  account,
-					Devices:  []models.Device{device},
+					Devices:  []*models.Device{&device},
 					CommitID: commit.ID,
 					Status:   models.UpdateStatusSuccess,
 				}
